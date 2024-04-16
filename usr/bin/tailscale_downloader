@@ -93,7 +93,8 @@ if [ ! -f /tmp/tailscale ]; then
     echo -e "tailscale_${version}/tailscale" > /tmp/tailscale_${version}_files.txt
     echo -e "tailscale_${version}/tailscaled" >> /tmp/tailscale_${version}_files.txt
     download_success=false
-    timeout_seconds=30
+# z240416:注意downloader自动更新脚本，将其中的timeout=30更改为100，以免失败不停重试
+    timeout_seconds=100
     for attempt in $range; do
         # echo "DOWNLOAD: ------------"
         # echo "下载zip并解压，总第 $attempt 次"
